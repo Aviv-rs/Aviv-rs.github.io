@@ -16,4 +16,4 @@ if (isBuild) {
 
 export default defineConfig({
   site:  BASE_URL,
-})
+}) 
