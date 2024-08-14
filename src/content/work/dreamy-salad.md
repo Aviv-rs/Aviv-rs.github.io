@@ -7,6 +7,7 @@ description: |
   A student project made using Premiere Pro, After effects and my wild creativity.
 tags:
   - Video Editing
+  - Premiere Pro
   - After Effects
   - Creative
 video_link: https://www.youtube.com/embed/MFvF7HepO34

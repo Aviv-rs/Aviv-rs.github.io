@@ -8,6 +8,7 @@ description: |
 tags:
   - Social Media
   - Video Editing
+  - Premiere Pro
   - Creative
   - Content Creation
 ---

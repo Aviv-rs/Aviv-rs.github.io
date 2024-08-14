@@ -1,4 +1,6 @@
 import { defineConfig } from 'astro/config';
 
-// https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+  site: 'https://aviv-rs.github.io',
+//   base: 'My-portfolio',
+})
