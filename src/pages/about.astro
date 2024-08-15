@@ -4,6 +4,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import Hero from '../components/Hero.astro';
 import Pill from '../components/Pill.astro';
+
+const skills = [
+	'Video Editing',
+	'Adobe Suite',
+	'Web Development',
+	'Creative Thinking',
+	'People Person'
+]
 ---
 
 <BaseLayout title="About | Aviv Roas" description="About Aviv Roas Lorem Ipsum">
@@ -35,20 +43,31 @@ import Pill from '../components/Pill.astro';
 					</p>
 				</div>
 			</section>
-			<!-- <section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
+			<section>
+				<h2 class="section-title">Skills</h2>
+				<div class="content flex gap-4 wrap">
+					{skills.map(skill=>(
+						<Pill>
+							<p>{skill}</p>
+						</Pill>
+					))}
 				</div>
 			</section>
 			<section>
-				<h2 class="section-title">Skills</h2>
+				<h2 class="section-title">Education</h2>
 				<div class="content">
-					<Pill>
-						<p>officia unde omnis</p>
-					</Pill>
+					<blockquote>Advanced Video Editing Course-Premiere Pro</blockquote>
+					<img src="/assets/mentor-adv.jpg" alt="A graduation certificate from a video editing course" >
+					<br/>
+					<br/>
+					<blockquote>Video Editing Course-Premiere Pro (completed with honors)</blockquote>
+					<img src="/assets/mentor-bg.png" alt="A graduation certificate from a video editing course" >
+					<br/>
+					<br/>
+					<blockquote>Fullstack Web Development</blockquote>
+					<img src="/assets/coding-certificate.jpg" alt="A graduation certificate from a video editing course" >
 				</div>
-			</section> -->
+			</section>
 		</main>
 
 		<ContactCTA />
@@ -94,6 +113,24 @@ import Pill from '../components/Pill.astro';
 	.content :global(a:hover),
 	.content :global(a:focus) {
 		text-decoration-color: currentColor;
+	}
+
+	.content :global(img) {
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-sm);
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		max-width: min(30rem, 100%);
+	}
+
+	.content :global(blockquote) {
+		font-size: var(--text-lg);
+		font-family: var(--font-brand);
+		font-weight: 600;
+		line-height: 1.1;
+		padding-inline-start: 1.5rem;
+		border-inline-start: 0.25rem solid var(--accent-dark);
+		color: var(--gray-0);
 	}
 
 	@media (min-width: 50em) {

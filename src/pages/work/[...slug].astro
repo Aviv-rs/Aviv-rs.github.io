@@ -77,8 +77,12 @@ const { Content } = await entry.render();
 
 	.tags {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 0.5rem;
+		@media (max-width: 50em){justify-content: center;}
+
 	}
+
 
 	.description {
 		font-size: var(--text-lg);
