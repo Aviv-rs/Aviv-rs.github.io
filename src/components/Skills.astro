@@ -1,22 +1,25 @@
 ---
 import Icon from './Icon.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section class="box skills">
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="lightbulb" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Creative Thinker</h2>
-		<p>Creative work is what makes me excited, and what will make your content stand out.</p>
+		<h2>{t('skills.1.title')}</h2>
+		<p>{t('skills.1.desc')}</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Fast Learner</h2>
-		<p>Able to learn quickly in order to adapt to multiple kinds of tasks.</p>
+		<h2>{t('skills.2.title')}</h2>
+		<p>{t('skills.2.desc')}</p>
 	</div>
 	<div class="stack gap-2 lg:gap-4">
 		<Icon icon="laptop" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>Technology Oriented</h2>
-		<p>Comfortable in a technological environment, with proficiency in various video editing, coding, design, and writing software.</p>
+		<h2>{t('skills.3.title')}</h2>
+		<p>{t('skills.3.desc')}</p>
 	</div>
 </section>
 

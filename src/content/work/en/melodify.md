@@ -1,6 +1,6 @@
 ---
 title: Melodify
-publishDate: 2019-10-02 00:00:00
+publishDate: 2022-10-07 00:00:00
 img: /assets/melodify.png
 img_alt: A screenshot of a homepage with music album covers.
 description: |

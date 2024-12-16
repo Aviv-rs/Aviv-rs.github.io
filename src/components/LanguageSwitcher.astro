@@ -1,0 +1,104 @@
+---
+import { ui, languages } from '../i18n/ui';
+import { getLangFromUrl } from '../i18n/utils';
+
+// Get the current language from the URL
+const currentLang = getLangFromUrl(Astro.url);
+---
+
+<div class="dropdown">
+  <button
+    id="language-switcher"
+    class="dropdown-button"
+    aria-label="Switch Language"
+    aria-expanded="false"
+  >
+    {languages[currentLang]} ▼
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="language-switcher">
+    {Object.entries(languages).map(([lang, label]) => (
+      <li>
+        <a
+          href={`/${lang}/`}
+          class={`dropdown-link ${lang === currentLang ? 'active' : ''}`}
+        >
+          {label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  /* Dropdown container */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    margin-inline-start: 1rem;
+  }
+
+  /* Dropdown button */
+  .dropdown-button {
+    padding: 0.5rem 1rem;
+    background-color: var(--gray-300);
+    color: var(--gray-900);
+    border: 1px solid var(--gray-400);
+    border-radius: 4px;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    cursor: pointer;
+    outline: none;
+    transition: background-color var(--theme-transition);
+  }
+
+  .dropdown-button:hover {
+    background-color: var(--gray-400);
+  }
+
+  .dropdown-button:focus {
+    border-color: var(--accent-regular);
+    box-shadow: 0 0 0 2px var(--accent-overlay);
+  }
+
+  /* Dropdown menu */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--gray-100);
+    border: 1px solid var(--gray-400);
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+    padding: 0.5rem 0;
+    z-index: 10;
+    list-style: none;
+    margin: 0;
+  }
+
+  /* Show dropdown menu on button hover or focus */
+  .dropdown:hover .dropdown-menu,
+  .dropdown:focus-within .dropdown-menu {
+    display: block;
+  }
+
+  /* Dropdown links */
+  .dropdown-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--gray-900);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    transition: background-color var(--theme-transition);
+  }
+
+  .dropdown-link:hover {
+    background-color: var(--gray-300);
+  }
+
+  .dropdown-link.active {
+    font-weight: bold;
+    color: var(--accent-regular);
+  }
+</style>

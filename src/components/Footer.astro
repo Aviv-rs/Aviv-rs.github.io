@@ -1,20 +1,15 @@
 ---
-import Icon from './Icon.astro';
-const currentYear = new Date().getFullYear();
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
+
 <footer>
-	<!-- <div class="group">
-		<p>
-			Designed & Developed in Portland with <a href="https://astro.build/">Astro</a>
-			<Icon icon="rocket-launch" size="1.2em" />
-		</p>
-		<p>&copy; {currentYear} Aviv Roas</p>
-	</div> -->
 	<p class="socials">
-		<a href="https://wa.me/+9720528283505"> WhatsApp</a>
-		<a href="https://instagram.com/aviv_rs"> Instagram</a>
-		<a href="https://www.linkedin.com/in/aviv-roas-3b1b55229/"> Linkedin</a>
+		<a target="_blank" href="https://wa.me/+9720528283505">{t('whatsapp')}</a>
+		<a target="_blank" href="https://instagram.com/aviv_rs">{t('instagram')}</a>
+		<a target="_blank" href="https://www.linkedin.com/in/aviv-roas-3b1b55229/">{t('linkedin')}</a>
 	</p>
 </footer>
 <style>

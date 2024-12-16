@@ -2,32 +2,37 @@
 import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import type { iconPaths } from './IconPaths';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Work', href: '/work/' },
-	{ label: 'About', href: '/about/' },
+	{ label: t('nav.home'), href: `/${lang}/` },
+	{ label: t('nav.work'), href: `/${lang}/work/` },
+	{ label: t('nav.about'), href:`/${lang}/about/` },
 ];
 
 /** Icon links to social media — edit these with links to your profiles! */
 const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths, target: string }[] = [
-	{ label: 'WhatsApp', href: 'https://wa.me/+9720528283505', target: '_blank', icon: 'whatsapp' },
-	{ label: 'Instagram', href: 'https://instagram.com/aviv_rs', target: '_blank', icon: 'instagram-logo' },
-	{ label: 'Linkedin', href: 'https://www.linkedin.com/in/aviv-roas-3b1b55229/', target: '_blank', icon: 'linkedin-logo' },
+	{ label: t('whatsapp'), href: 'https://wa.me/+9720528283505', target: '_blank', icon: 'whatsapp' },
+	{ label: t('instagram'), href: 'https://instagram.com/aviv_rs', target: '_blank', icon: 'instagram-logo' },
+	{ label: t('linkedin'), href: 'https://www.linkedin.com/in/aviv-roas-3b1b55229/', target: '_blank', icon: 'linkedin-logo' },
 ];
 ---
 
-<nav>
+<nav data-lang={lang}>
 	<div class="menu-header">
-		<a href="/" class="site-title">
+		<a href={"/" + lang + "/"} class="site-title">
 			<img src="/assets/initials logo.png" width="40px" height="40px" alt="A logo with my initials">
-			Aviv Roas
+			{t('nav.logoName')}
 		</a>
 		<menu-button>
 			<template>
 				<button class="menu-button" aria-expanded="false">
-					<span class="sr-only">Menu</span>
+					<span class="sr-only">{t('menu')}</span>
 					<Icon icon="list" />
 				</button>
 			</template>
@@ -45,7 +50,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths, ta
 								{
 									active:
 										Astro.url.pathname === href ||
-										(href !== '/' && Astro.url.pathname.startsWith(href)),
+										(href !== '/' + lang + '/' && Astro.url.pathname.startsWith(href)),
 								},
 							]}
 							href={href}
@@ -82,8 +87,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths, ta
 								'link',
 								{
 									active:
-										Astro.url.pathname === href ||
-										(href !== '/' && Astro.url.pathname.startsWith(href)),
+										Astro.url.pathname === href
 								},
 							]}
 							href={href}
@@ -108,6 +112,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths, ta
 
 			<div class="theme-toggle">
 				<ThemeToggle />
+				<LanguageSwitcher/>
 			</div>
 		</div>
 	</div>
@@ -157,15 +162,17 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths, ta
 		font-family: var(--font-brand);
 		font-weight: 500;
 		margin-bottom: 3.5rem;
+		&[data-lang=he]{direction: rtl;}
 	}
-
+	
 	.menu-header {
 		display: flex;
 		justify-content: space-between;
 		gap: 0.5rem;
 		padding: 1.5rem;
+		
 	}
-
+	
 	.site-title {
 		display: flex;
 		gap: 0.5rem;
@@ -238,7 +245,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths, ta
 	.menu-footer {
 		--icon-size: var(--text-xl);
 		--icon-padding: 0.5rem;
-
+		direction: ltr;
 		display: flex;
 		justify-content: space-between;
 		gap: 0.75rem;
@@ -246,6 +253,7 @@ const iconLinks: { label: string; href: string; icon: keyof typeof iconPaths, ta
 		background-color: var(--gray-999);
 		border-radius: 0 0 0.75rem 0.75rem;
 		box-shadow: var(--shadow-lg);
+
 	}
 
 	.socials {
