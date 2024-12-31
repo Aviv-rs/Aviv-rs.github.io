@@ -15,11 +15,11 @@ tags:
 video_link: https://www.youtube.com/embed/hVI4keZh8QY
 ---
 
-> Raised over 300,000₪
+> Raised over 500,000₪
 
 With the purpose of giving disabled kids and adults a true opportunity for a full and meaningful life-
 <br>
-"Tsad Kadima" has an <a target="_blank" href="https://www.charidy.com/TsadKadima/9">annual fundraising campaign</a> in which I took part as a video editor, making a commercial video which helped raising over 300,000₪.
+"Tsad Kadima" has an <a target="_blank" href="https://www.charidy.com/TsadKadima/9">annual fundraising campaign</a> in which I took part as a video editor, making a commercial video which helped raising over 500,000₪.
 
 <br>
 <br>
